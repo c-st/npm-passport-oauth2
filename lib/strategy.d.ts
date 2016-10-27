@@ -1,4 +1,5 @@
 import Strategy = require('passport-strategy');
+import Store = require('./store/null');
 
 /**
  * Creates an instance of `OAuth2Strategy`.
@@ -27,15 +28,6 @@ import Strategy = require('passport-strategy');
  * Additional `info` can optionally be passed as a third argument, typically
  * used to display informational messages.  If an exception occured, `err`
  * should be set.
- *
- * Options:
- *
- *   - `authorizationURL`  URL used to obtain an authorization grant
- *   - `tokenURL`          URL used to obtain an access token
- *   - `clientID`          identifies client to service provider
- *   - `clientSecret`      secret used to establish ownership of the client identifer
- *   - `callbackURL`       URL to which the service provider will redirect the user after obtaining authorization
- *   - `passReqToCallback` when `true`, `req` is the first argument to the verify callback (default: `false`)
  *
  * Examples:
  *
@@ -134,6 +126,15 @@ declare namespace OAuth2Strategy {
      * When `true`, `req` is the first argument to the verify callback (default: `false`).
      */
     passReqToCallback?: boolean;
+    scope?: string[];
+    scopeSeparator?: string;
+    state?: string;
+    store?: Store;
+    proxy?: boolean;
+    skipUserProfile?: boolean;
+    customHeaders?: {
+      [key: string]: string | string[];
+    };
   }
 
   export interface Request extends Strategy.Request {
