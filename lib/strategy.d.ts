@@ -101,15 +101,20 @@ declare class OAuth2Strategy implements Strategy {
 }
 
 declare namespace OAuth2Strategy {
-  export interface Options {
+  export interface Options extends OAuth2Options {
+    authorizationURL: string;
+    tokenURL: string;
+  }
+
+  export interface OAuth2Options {
     /**
      * URL used to obtain an authorization grant.
      */
-    authorizationURL: string;
+    authorizationURL?: string;
     /**
      * URL used to obtain an access token.
      */
-    tokenURL: string;
+    tokenURL?: string;
     /**
      * Identifies client to service provider.
      */
