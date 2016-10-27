@@ -46,7 +46,7 @@ import Store = require('./store/null');
  *     ));
  */
 declare class OAuth2Strategy <P extends any> implements Strategy {
-  name: 'oauth2';
+  name: string;
 
   constructor (options: OAuth2Strategy.Options, cb: OAuth2Strategy.VerifyFunction<P>);
 
