@@ -10,7 +10,7 @@ new OAuth2Strategy(
     clientSecret: '123',
     callbackURL: 'http://localhost:3000/auth/example/callback'
   },
-  function(accessToken, refreshToken, profile, cb) {
+  function (accessToken, refreshToken, profile, cb) {
     return cb(null, {});
   }
 );

@@ -45,10 +45,10 @@ import Store = require('./store/null');
  *       }
  *     ));
  */
-declare class OAuth2Strategy implements Strategy {
+declare class OAuth2Strategy <P extends any> implements Strategy {
   name: 'oauth2';
 
-  constructor (options: OAuth2Strategy.Options, cb: OAuth2Strategy.VerifyFunction);
+  constructor (options: OAuth2Strategy.Options, cb: OAuth2Strategy.VerifyFunction<P>);
 
   /**
    * Authenticate request by delegating to a service provider using OAuth 2.0.
@@ -63,7 +63,7 @@ declare class OAuth2Strategy implements Strategy {
    * applications (and users of those applications) in the initial registration
    * process by automatically submitting required information.
    */
-  userProfile (accessToken: string, done: (err: Error | null, profile: any) => void): void;
+  userProfile (accessToken: string, done: (err: Error | null, profile: P) => void): void;
 
   /**
    * Return extra parameters to be included in the authorization request.
@@ -154,8 +154,8 @@ declare namespace OAuth2Strategy {
     state?: string;
   }
 
-  export interface VerifyFunction {
-    (accessToken: string, refreshToken: string, profile: any, done: (err: Error | null, user: any | boolean, info?: any) => void): void;
+  export interface VerifyFunction <P> {
+    (accessToken: string, refreshToken: string, profile: P, done: (err: Error | null, user: any | boolean, info?: any) => void): void;
   }
 }
 
