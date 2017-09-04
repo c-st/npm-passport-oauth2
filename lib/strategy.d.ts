@@ -1,5 +1,7 @@
-import Strategy = require('passport-strategy');
+// import Strategy = require('passport-strategy');
 import Store = require('./store/null');
+import * as passport from 'passport';
+import express = require('express');
 
 /**
  * Creates an instance of `OAuth2Strategy`.
@@ -45,7 +47,7 @@ import Store = require('./store/null');
  *       }
  *     ));
  */
-declare class OAuth2Strategy <P extends any> implements Strategy {
+declare class OAuth2Strategy <P extends any> implements passport.Strategy {
   name: string;
 
   constructor (options: OAuth2Strategy.Options, cb: OAuth2Strategy.VerifyFunction<P>);
@@ -142,7 +144,7 @@ declare namespace OAuth2Strategy {
     };
   }
 
-  export interface Request extends Strategy.Request {
+  export interface Request extends express.Request {
     query: {
       [key: string]: string;
     };
